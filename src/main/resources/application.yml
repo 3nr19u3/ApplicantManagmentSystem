@@ -1,26 +1,18 @@
 server:
-  port: 8080
+  port: ${SERVER_PORT:8080}
 
 spring:
   application:
     name: ApplicantManagmentSystem
 
   r2dbc:
-    url: r2dbc:mysql://localhost:3306/clientsdb
-    username: root
-    password: admin123
+    url: ${SPRING_R2DBC_URL}
+    username: ${SPRING_R2DBC_USERNAME}
+    password: ${SPRING_R2DBC_PASSWORD}
 
-  #  flyway:
-  #    url: jdbc:mysql://localhost:3306/clientsdb
-  #    user: root
-  #    password: admin123
-  #    locations: classpath:db/migration
-
-  #Jackson Configuration (enforce strict deserialization)
   jackson:
     deserialization:
       fail-on-unknown-properties: true
-
 
 management:
   endpoints:
@@ -34,37 +26,33 @@ management:
 
 app:
   security:
-    allowed-email-domain: seek.com
+    allowed-email-domain: ${ALLOWED_EMAIL_DOMAIN:seek.com}
     jwt:
-      secret: "n8YxPq2mV7sL1cK9dR4eT6uW0zA3bH5jQ8sF2gJ7kL9mN1pR4tV6xZ0cD3eG5hJ"
-      issuer: "clients-service"
-      ttl-minutes: 60
+      secret: ${JWT_SECRET}
+      issuer: ${JWT_ISSUER:clients-service}
+      ttl-minutes: ${JWT_TTL_MINUTES:60}
 
   life:
-    expectancy-years: 73
+    expectancy-years: ${LIFE_EXPECTANCY_YEARS:73}
 
-  sql:
-    init:
-      mode: never
+openapi:
+  title: Applicant Management System API
+  description: API para gestión de clientes
+  version: v1
+  terms-of-service: https://example.com/terms
+  contact:
+    name: DevPull
+    url: https://www.devpull.dev
+    email: hello@devpull.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  ui:
+    enabled: ${OPENAPI_UI_ENABLED:true}
+    path: ${OPENAPI_UI_PATH:/swagger}
 
-  openapi:
-    title: Applicant Management System API
-    description: API para gestión de clientes
-    version: v1
-    terms-of-service: https://example.com/terms
-    contact:
-      name: DevPull
-      url: https://www.devpull.dev
-      email: hello@devpull.com
-    license:
-      name: Apache 2.0
-      url: https://www.apache.org/licenses/LICENSE-2.0.html
-    ui:
-      enabled: true
-      path: /swagger
-
-  springdoc:
-    swagger-ui:
-      path: ${app.openapi.ui.path:/swagger}
-    api-docs:
-      path: /v3/api-docs
+springdoc:
+  swagger-ui:
+    path: ${OPENAPI_UI_PATH:/swagger}
+  api-docs:
+    path: /v3/api-docs
