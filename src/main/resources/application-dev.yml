@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ApplicantManagmentSystem
+
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/clientsdb
+    username: root
+    password: admin123
+
+#  sql:
+#    init:
+#      mode: always
+#      schema-locations: classpath:schema.sql
+
+  flyway:
+    enabled: false
+
+logging:
+  level:
+    org.springframework.web.server.adapter.HttpWebHandlerAdapter: DEBUG
+    org.springframework.data.r2dbc: DEBUG
+    io.asyncer.r2dbc.mysql: DEBUG
+    io.r2dbc.mysql: DEBUG
+
