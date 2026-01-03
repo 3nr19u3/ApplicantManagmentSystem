@@ -1,0 +1,17 @@
+spring:
+  r2dbc:
+    url: r2dbc:h2:mem:///testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: username
+    password: "password"
+
+app:
+  security:
+    allowed-email-domain: test.com
+    jwt:
+      secret: Q7xM4A9sT2DkR5Zp8N1HcJ6bVgE0WmLFeU3ySqdVgE0WmLFeU3ySqd
+      issuer: test-issuer
+      ttl-minutes: 60
+
+openapi:
+  ui:
+    enabled: false

@@ -32,8 +32,8 @@ jobs:
           java-version: "21"
           cache: maven
 
-      - name: Test
-        run: mvn -B test
+      - name: Test (profile=test)
+        run: mvn -B test -Dspring.profiles.active=test
 
       - name: Build (jar)
         run: mvn -B package -DskipTests
