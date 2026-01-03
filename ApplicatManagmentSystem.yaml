@@ -1,0 +1,266 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: My Collection
+meta:
+  id: wrk_8860ca6de7774a2989910eccaad00e40
+  created: 1718964410228
+  modified: 1766572520206
+  description: ""
+collection:
+  - name: ApplicantManagerSystem
+    meta:
+      id: fld_c8fb23c3429140b49789b5cd78e88fc1
+      created: 1767181781810
+      modified: 1767182289906
+      sortKey: -1767181781810
+      description: ""
+    children:
+      - url: http://{{ _.host }}/api/v1/clients
+        name: Create client
+        meta:
+          id: req_9c61a8a98245412d9db341b46cb69330
+          created: 1767181785950
+          modified: 1767439549814
+          isPrivate: false
+          description: ""
+          sortKey: -1767181785950
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Robert",     
+            	"lastName": "Valle",
+            	"birthDate": "2000-03-06"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.1.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          disabled: false
+          token: "{{ _.token }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/v1/clients/metrics
+        name: Get metrics
+        meta:
+          id: req_2a60eeabc5e74ddd845d2aac8548955d
+          created: 1767182215075
+          modified: 1767355513007
+          isPrivate: false
+          description: ""
+          sortKey: -1767182215075
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.1.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          disabled: false
+          token: eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJjbGllbnRzLXNlcnZpY2UiLCJzdWIiOiJsdWlzQHNlZWsuY29tIiwiaWF0IjoxNzY3MzUyMjk5LCJleHAiOjE3NjczNTU4OTl9.UeWJttD9J7HRNAPNQh0uMOTVfXUwUX2SvCf30l1avJp74jk2PqlTGKEy3f5UHrNw
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://{{ _.host }}/api/v1/clients
+        name: List Clients
+        meta:
+          id: req_32e98e598d3f4c2b93e81b594794c1fd
+          created: 1767182290889
+          modified: 1767438445378
+          isPrivate: false
+          description: ""
+          sortKey: -1767182290889
+        method: GET
+        parameters:
+          - name: page
+            value: "0"
+            description: ""
+            disabled: true
+          - name: size
+            value: "20"
+            description: ""
+            disabled: true
+        headers:
+          - name: User-Agent
+            value: insomnia/12.1.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.token }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://{{ _.host }}i/v1/clients/{{ _.user_id }}
+        name: Get by ID
+        meta:
+          id: req_9dbc3288e5e14ee1a067e01a4a83113a
+          created: 1767336470320
+          modified: 1767439164814
+          isPrivate: false
+          description: ""
+          sortKey: -1767336470320
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.1.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          disabled: false
+          token: "{{ _.token }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://{{ _.host }}/api/v1/clients/{{ _.user_id }}
+        name: Update client
+        meta:
+          id: req_19013696109145069b6b3cd13f211acb
+          created: 1767355871537
+          modified: 1767439525221
+          isPrivate: false
+          description: ""
+          sortKey: -1767182000512.5
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Roberto Carlos",     
+            	"lastName": "Vallejos Perez",
+            	"birthDate": "2009-03-06"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.1.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.token }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://{{ _.host }}/api/v1/clients/{{ _.user_id }}
+        name: Delete client
+        meta:
+          id: req_d3bb2f659f6f4d77af241acad2437b29
+          created: 1767356558080
+          modified: 1767438554110
+          isPrivate: false
+          description: ""
+          sortKey: -1767181893231.25
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/12.1.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{{ _.token }}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - name: Auth
+        meta:
+          id: fld_8850cd7d097743f79ae9cd683c70ceb9
+          created: 1767342140273
+          modified: 1767342140273
+          sortKey: -1767342140273
+          description: ""
+        children:
+          - url: http://{{ _.host }}/auth/token
+            name: Generate token
+            meta:
+              id: req_67ae4619dbcd403dbbd9e44fa8130bfd
+              created: 1767342190251
+              modified: 1767439477298
+              isPrivate: false
+              description: ""
+              sortKey: -1767342190251
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"email": "luis@seek.com"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_e3a8235bf5d34e09660d68d21152a807db835cd7
+    created: 1766572520222
+    modified: 1766572520222
+environments:
+  name: Base Environment
+  meta:
+    id: env_e3a8235bf5d34e09660d68d21152a807db835cd7
+    created: 1718964410233
+    modified: 1766572520205
+    isPrivate: false
+  subEnvironments:
+    - name: client-manager-system
+      meta:
+        id: env_fe048c948fdc4512ac5fc8b951c2135b
+        created: 1767438036477
+        modified: 1767439603220
+        isPrivate: false
+        sortKey: 1767438036477
+      data:
+        host: applicant-managment-system-env.eba-8gd6b6c3.us-east-1.elasticbeanstalk.com
+        token: eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJjbGllbnRzLXNlcnZpY2UiLCJzdWIiOiJsdWlzQHNlZWsuY29tIiwiaWF0IjoxNzY3NDM4MjY5LCJleHAiOjE3Njc0NDE4Njl9.Z70ZHuPfMY2APMzSk7fCOuGjcJ3yt9_pa4jQJ7j5t6ixczbnOqesXO4mGvU51ltv
+        user_id: 58f8fd80-f-a46c-d81654d63dbe
+      color: "#f46434"
